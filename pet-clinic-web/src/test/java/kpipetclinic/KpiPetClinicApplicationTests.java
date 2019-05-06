@@ -1,4 +1,4 @@
-package ua.kpi.kpipetclinic;
+package kpipetclinic;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
