@@ -1,11 +1,11 @@
 package ua.kpi.kpipetclinic.services.map;
 
 import ua.kpi.kpipetclinic.model.Vet;
-import ua.kpi.kpipetclinic.services.CrudService;
+import ua.kpi.kpipetclinic.services.VetService;
 
 import java.util.Set;
 
-public class VetServiceMap extends AbstractMapService<Vet, Long> implements CrudService<Vet, Long> {
+public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
 
     @Override
     public Set<Vet> findAll() {
