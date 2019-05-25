@@ -1,10 +1,12 @@
 package ua.kpi.kpipetclinic.services.map;
 
+import org.springframework.stereotype.Service;
 import ua.kpi.kpipetclinic.model.Vet;
 import ua.kpi.kpipetclinic.services.VetService;
 
 import java.util.Set;
 
+@Service
 public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
 
     @Override

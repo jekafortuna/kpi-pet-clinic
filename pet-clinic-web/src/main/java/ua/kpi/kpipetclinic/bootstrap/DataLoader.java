@@ -6,8 +6,6 @@ import ua.kpi.kpipetclinic.model.Owner;
 import ua.kpi.kpipetclinic.model.Vet;
 import ua.kpi.kpipetclinic.services.OwnerService;
 import ua.kpi.kpipetclinic.services.VetService;
-import ua.kpi.kpipetclinic.services.map.OwnerServiceMap;
-import ua.kpi.kpipetclinic.services.map.VetServiceMap;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -15,9 +13,9 @@ public class DataLoader implements CommandLineRunner {
     private final OwnerService ownerService;
     private final VetService vetService;
 
-    public DataLoader() {
-        ownerService = new OwnerServiceMap();
-        vetService = new VetServiceMap();
+    public DataLoader(OwnerService ownerService, VetService vetService) {
+        this.ownerService = ownerService;
+        this.vetService = vetService;
     }
 
     @Override

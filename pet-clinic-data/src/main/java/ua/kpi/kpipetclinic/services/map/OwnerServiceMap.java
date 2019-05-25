@@ -1,10 +1,12 @@
 package ua.kpi.kpipetclinic.services.map;
 
+import org.springframework.stereotype.Service;
 import ua.kpi.kpipetclinic.model.Owner;
 import ua.kpi.kpipetclinic.services.OwnerService;
 
 import java.util.Set;
 
+@Service
 public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService{
 
     @Override
