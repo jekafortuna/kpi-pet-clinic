@@ -9,6 +9,9 @@ import ua.kpi.kpipetclinic.services.PetTypeService;
 
 import java.util.Set;
 
+/**
+ * Map Implementation Sample of interface OwnerService
+ */
 @Service
 public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService{
 
