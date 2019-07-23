@@ -1,5 +1,6 @@
 package ua.kpi.kpipetclinic.services.map;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import ua.kpi.kpipetclinic.model.Visit;
 import ua.kpi.kpipetclinic.services.VisitService;
@@ -7,6 +8,7 @@ import ua.kpi.kpipetclinic.services.VisitService;
 import java.util.Set;
 
 @Service
+@Profile({"default", "map"})
 public class VisitMapService extends AbstractMapService<Visit, Long> implements VisitService {
 
     @Override

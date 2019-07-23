@@ -1,5 +1,6 @@
 package ua.kpi.kpipetclinic.services.map;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import ua.kpi.kpipetclinic.model.Speciality;
 import ua.kpi.kpipetclinic.services.SpecialtyService;
@@ -7,6 +8,7 @@ import ua.kpi.kpipetclinic.services.SpecialtyService;
 import java.util.Set;
 
 @Service
+@Profile({"default", "map"})
 public class SpecialityMapService extends AbstractMapService<Speciality, Long> implements SpecialtyService {
     @Override
     public Set<Speciality> findAll() {

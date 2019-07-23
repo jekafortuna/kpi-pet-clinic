@@ -1,5 +1,6 @@
 package ua.kpi.kpipetclinic.services.map;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import ua.kpi.kpipetclinic.model.Owner;
 import ua.kpi.kpipetclinic.model.Pet;
@@ -13,6 +14,7 @@ import java.util.Set;
  * Map Implementation Sample of interface OwnerService
  */
 @Service
+@Profile({"default", "map"})
 public class OwnerMapService extends AbstractMapService<Owner, Long> implements OwnerService{
 
     private final PetTypeService petTypeService;
