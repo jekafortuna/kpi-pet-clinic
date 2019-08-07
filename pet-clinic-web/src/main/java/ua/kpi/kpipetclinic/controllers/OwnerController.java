@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import ua.kpi.kpipetclinic.model.Owner;
 import ua.kpi.kpipetclinic.services.OwnerService;
+import ua.kpi.kpipetclinic.view.ViewConstants;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -15,6 +16,8 @@ import java.util.List;
 @RequestMapping("/owners")
 @Controller
 public class OwnerController {
+
+    private ViewConstants viewConstants;
 
     private final OwnerService ownerService;
 
@@ -35,40 +38,40 @@ public class OwnerController {
 
     @RequestMapping("/find")
     public String findOwners(Model model){
-        model.addAttribute("owner", Owner.builder().build());
-        return "owners/findOwners";
+        model.addAttribute(ViewConstants.OWNER, Owner.builder().build());
+        return ViewConstants.VIEW_OWNERS_FIND_OWNERS_FORM;
     }
 
     @GetMapping("/new")
     public String initCreationOwnerForm(Model model){
-        model.addAttribute("owner", Owner.builder().build());
-        return "owners/createOrUpdateOwnerForm";
+        model.addAttribute(ViewConstants.OWNER, Owner.builder().build());
+        return ViewConstants.VIEW_OWNERS_CREATE_AND_UPDATE_FORM;
     }
 
     @PostMapping("/new")
     public String processCreationForm(@Valid Owner owner, BindingResult result){
         if (result.hasErrors()){
-            return "owners/createOrUpdateOwnerForm";
+            return ViewConstants.VIEW_OWNERS_CREATE_AND_UPDATE_FORM;
         } else {
             Owner savedOwner = ownerService.save(owner);
-            return "redirect:/owners/" + savedOwner.getId();
+            return ViewConstants.VIEW_REDIRECT_TO_OWNERS_FORM + savedOwner.getId();
         }
     }
 
     @GetMapping("/{ownerId}/edit")
     public String initUpdateOwnerForm(@PathVariable Long ownerId, Model model){
         model.addAttribute(ownerService.findById(ownerId));
-        return "owners/createOrUpdateOwnerForm";
+        return ViewConstants.VIEW_OWNERS_CREATE_AND_UPDATE_FORM;
     }
 
     @PostMapping("/{ownerId}/edit")
     public String processUpdateOwnerForm(@Valid Owner owner, BindingResult result, @PathVariable Long ownerId){
         if (result.hasErrors()){
-            return "owners/createOrUpdateOwnerForm";
+            return ViewConstants.VIEW_OWNERS_CREATE_AND_UPDATE_FORM;
         } else {
             owner.setId(ownerId);
             Owner savedOwner = ownerService.save(owner);
-            return "redirect:/owners/" + savedOwner.getId();
+            return ViewConstants.VIEW_REDIRECT_TO_OWNERS_FORM + savedOwner.getId();
         }
     }
 
@@ -86,21 +89,21 @@ public class OwnerController {
         if (results.isEmpty()) {
             // no owners found
             result.rejectValue("lastName", "notFound", "not found");
-            return "owners/findOwners";
+            return ViewConstants.VIEW_OWNERS_FIND_OWNERS_FORM;
         } else if (results.size() == 1) {
             // 1 owner found
             owner = results.get(0);
-            return "redirect:/owners/" + owner.getId();
+            return ViewConstants.VIEW_REDIRECT_TO_OWNERS_FORM + owner.getId();
         } else {
             // multiple owners found
             model.addAttribute("selections", results);
-            return "owners/ownersList";
+            return ViewConstants.VIEW_OWNERS_OWNERS_LIST_FORM;
         }
     }
 
     @GetMapping("/{ownerId}")
     public ModelAndView showOwner(@PathVariable Long ownerId){
-        ModelAndView modelAndView = new ModelAndView("owners/ownerDetails");
+        ModelAndView modelAndView = new ModelAndView(ViewConstants.VIEW_OWNERS_OWNER_DETAILS_FORM);
         modelAndView.addObject(ownerService.findById(ownerId));
         return modelAndView;
     }
