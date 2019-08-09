@@ -82,7 +82,7 @@ class PetControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(model().attributeExists(ViewConstants.OWNER))
                 .andExpect(model().attributeExists(ViewConstants.PET))
-                .andExpect(view().name(ViewConstants.VIEW_PETS_CREATE_OR_UPDATE_FORM));
+                .andExpect(view().name(ViewConstants.VIEW_PETS_CREATE_OR_UPDATE_PET_FORM));
     }
 
     @Test
@@ -107,7 +107,7 @@ class PetControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(model().attributeExists(ViewConstants.OWNER))
                 .andExpect(model().attributeExists(ViewConstants.PET))
-                .andExpect(view().name(ViewConstants.VIEW_PETS_CREATE_OR_UPDATE_FORM));
+                .andExpect(view().name(ViewConstants.VIEW_PETS_CREATE_OR_UPDATE_PET_FORM));
     }
 
     @Test

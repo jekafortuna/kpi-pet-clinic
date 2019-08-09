@@ -54,7 +54,7 @@ public class PetController {
         owner.getPets().add(pet);
         pet.setOwner(owner);
         model.addAttribute(ViewConstants.PET, pet);
-        return ViewConstants.VIEW_PETS_CREATE_OR_UPDATE_FORM;
+        return ViewConstants.VIEW_PETS_CREATE_OR_UPDATE_PET_FORM;
     }
 
     @PostMapping("/pets/new")
@@ -66,7 +66,7 @@ public class PetController {
         pet.setOwner(owner);
         if (result.hasErrors()){
             model.addAttribute(ViewConstants.PET, pet);
-            return ViewConstants.VIEW_PETS_CREATE_OR_UPDATE_FORM;
+            return ViewConstants.VIEW_PETS_CREATE_OR_UPDATE_PET_FORM;
         } else {
             petService.save(pet);
 
@@ -77,7 +77,7 @@ public class PetController {
     @GetMapping("/pets/{petId}/edit")
     public String initUpdateForm(@PathVariable Long petId, Model model){
         model.addAttribute(ViewConstants.PET, petService.findById(petId));
-        return ViewConstants.VIEW_PETS_CREATE_OR_UPDATE_FORM;
+        return ViewConstants.VIEW_PETS_CREATE_OR_UPDATE_PET_FORM;
     }
 
     @PostMapping("/pets/{petId}/edit")
@@ -85,7 +85,7 @@ public class PetController {
         if (result.hasErrors()){
             pet.setOwner(owner);
             model.addAttribute(ViewConstants.PET, pet);
-            return ViewConstants.VIEW_PETS_CREATE_OR_UPDATE_FORM;
+            return ViewConstants.VIEW_PETS_CREATE_OR_UPDATE_PET_FORM;
         } else {
             owner.getPets().add(pet);
             petService.save(pet);
