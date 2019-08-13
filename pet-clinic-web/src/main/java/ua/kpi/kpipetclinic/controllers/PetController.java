@@ -68,6 +68,7 @@ public class PetController {
             model.addAttribute(ViewConstants.PET, pet);
             return ViewConstants.VIEW_PETS_CREATE_OR_UPDATE_PET_FORM;
         } else {
+            pet.setOwner(owner);
             petService.save(pet);
 
             return ViewConstants.VIEW_REDIRECT_TO_OWNERS_FORM + owner.getId();
@@ -87,7 +88,7 @@ public class PetController {
             model.addAttribute(ViewConstants.PET, pet);
             return ViewConstants.VIEW_PETS_CREATE_OR_UPDATE_PET_FORM;
         } else {
-            owner.getPets().add(pet);
+            pet.setOwner(owner);
             petService.save(pet);
 
             return ViewConstants.VIEW_REDIRECT_TO_OWNERS_FORM + owner.getId();
