@@ -6,9 +6,11 @@ public class ViewConstants {
     public static final String OWNER = "owner";
     public static final String PET = "pet";
     public static final String VISIT = "visit";
+    public static final String DATE = "date";
     public static final String VIEW_PETS_CREATE_OR_UPDATE_PET_FORM = "pets/createOrUpdatePetForm";
     public static final String VIEW_PETS_CREATE_OR_UPDATE_VISIT_FORM = "pets/createOrUpdateVisitForm";
     public static final String VIEW_OWNERS_CREATE_AND_UPDATE_FORM = "owners/createOrUpdateOwnerForm";
+    public static final String VIEW_OWNERS_OWNERS_ID_PETS_PETS_ID_VISITS_NEW_FORM = "/owners/{ownerId}/pets/{petId}/visits/new";
     public static final String VIEW_OWNERS_OWNERS_LIST_FORM = "owners/ownersList";
     public static final String VIEW_OWNERS_FIND_OWNERS_FORM = "owners/findOwners";
     public static final String VIEW_OWNERS_OWNER_DETAILS_FORM = "owners/ownerDetails";
