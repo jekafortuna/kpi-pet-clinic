@@ -43,6 +43,10 @@ public class DataLoader implements CommandLineRunner {
         cat.setName("Cat");
         PetType savedCatPetType = petTypeService.save(cat);
 
+        PetType hamster = new PetType();
+        hamster.setName("Hamster");
+        PetType savedHamsterPetType = petTypeService.save(hamster);
+
         Speciality radiology = new Speciality();
         radiology.setDescription("Radiology");
         Speciality savedRadiology = specialtyService.save(radiology);
@@ -85,6 +89,13 @@ public class DataLoader implements CommandLineRunner {
         fionasCat.setName("Milka");
         owner2.getPets().add(fionasCat);
 
+        Pet fionasHamster = new Pet();
+        fionasHamster.setPetType(savedHamsterPetType);
+        fionasHamster.setOwner(owner2);
+        fionasHamster.setBirthDate(LocalDate.of(2016,2,29));
+        fionasHamster.setName("Bobby");
+        owner2.getPets().add(fionasHamster);
+
         ownerService.save(owner2);
 
         Visit fionasCatVisit = new Visit();
@@ -109,6 +120,14 @@ public class DataLoader implements CommandLineRunner {
         vet2.getSpecialities().add(savedSurgery);
 
         vetService.save(vet2);
+
+        Vet vet3 = new Vet();
+        vet3.setFirstName("Captain");
+        vet3.setLastName("Morgan");
+        vet3.getSpecialities().add(savedDentistry);
+        vet3.getSpecialities().add(savedSurgery);
+
+        vetService.save(vet3);
 
         System.out.println("Loaded vets...");
     }
