@@ -32,12 +32,12 @@ public class OwnerSDJpaService implements OwnerService {
 
     @Override
     public Owner findByLastName(String lastName) {
-//        return ownerRepository.findByLastName(lastName);
-        return this.findAll()
-                .stream()
-                .filter(owner -> owner.getFirstName().equalsIgnoreCase(lastName))
-                .findFirst()
-                .orElse(null);
+        return ownerRepository.findByLastName(lastName);
+//        return this.findAll()
+//                .stream()
+//                .filter(owner -> owner.getFirstName().equalsIgnoreCase(lastName))
+//                .findFirst()
+//                .orElse(null);
     }
 
     @Override
